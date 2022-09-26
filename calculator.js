@@ -68,7 +68,7 @@ function totalMonthly(){
 
 function render() {
     // Empty the table
-    // $('#employeesTable').empty();
+    $('#employeesTable').empty();
 
     // Then add everything back into it!
     for (let staff of employees) {
@@ -83,7 +83,7 @@ function render() {
                 
                 <td>
                     <button class="deleteBtn">
-        
+                    ${'delete'}
                     </button>
                 </td>
             </tr>
