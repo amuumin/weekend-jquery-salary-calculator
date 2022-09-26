@@ -98,7 +98,7 @@ function render() {
 
 function onReady() {
     // Event
-    $('#messageForm').on('submit', onSubmitPost);
+    $('#messageForm').on('submit', onSubmitEmployee);
 
     // "The delete button ain't there yet" - Edan
     // console.log('in onReady', $('.deleteBtn'));
@@ -108,7 +108,7 @@ function onReady() {
     // but only call onDelete if it's a `.deleteBtn` element
     //
     // aka "Event Delegation"
-    $('#postsTable').on('click', '.deleteBtn', onDelete);
+    $('#employeesTable').on('click', '.deleteBtn', onDelete);
 }   
 
 function onDelete() {
@@ -129,17 +129,19 @@ function onSubmitEmployee(evt) {
     // Don't reload the page, plz
     evt.preventDefault();
 
-    console.log('onSubmitPost', $(this));
+    console.log('onSubmitEmployee', $(this));
     
     // Update State....
     let newEmployee = {
-        : $('#contentInput').val(),
-        author: $('#authorInput').val(),
-        date: $('#dateInput').val()
+        firstName: $('#firstName-input').val(),
+        lastName: $('#lastName-input').val(),
+        ID: $('id-input').val(),
+        title: $('#title-Input').val(),
+        annualSalary: $('#annualSalary-Input').val()
     };
-    console.log('newPost is', newPost);
-    posts.push(newPost)  // TODO: add object to state
-    console.log('posts is now', posts);
+    console.log('newEmployee is', newEmployee);
+    employee.push(newEmployee)  // TODO: add object to state
+    console.log('employees are now', employee);
 
     // Render
     render(); 
@@ -147,16 +149,18 @@ function onSubmitEmployee(evt) {
 
 function render() {
     // Empty the table
-    $('#postsTable').empty();
+    $('#employeesTable').empty();
 
     // Then add everything back into it!
     for (let post of posts) {
         // Adding a <tr> for each post
-        $('#postsTable').append(`
+        $('#employeesTable').append(`
             <tr>
-                <td>${post.author}</td>
-                <td>${post.message}</td>
-                <td>${post.date}</td>
+                <td>${employee.firstName}</td>
+                <td>${employee.lastName}</td>
+                <td>${employee.id}</td>
+                <td>${employee.title}</td>
+                <td>${employee.annualSalary}</td>
                 <td>
                     <button class="deleteBtn">
                         ☠️
